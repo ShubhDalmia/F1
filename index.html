@@ -1,124 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>F1 Meme Garage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .animate-marquee {
-      display: inline-block;
-      animation: marquee 10s linear infinite;
-    }
+  @keyframes marquee{
+    0%{transform:translateX(100%)}
+    100%{transform:translateX(-100%)} }
+  .animate-marquee{
+    display:inline-block;
+    animation:marquee 10s linear infinite }
   </style>
 </head>
-<body class="text-white font-sans bg-cover bg-center" style="background-image: url('images/max-meme.jpg');">
+<body class="text-white font-sans bg-cover bg-center" style="background-image:url('images/max-meme.jpg')">
+<header class="bg-red-700 bg-opacity-90 p-6 text-center text-4xl font-extrabold shadow-md">
+  F1 shit from Verstappen's Fanboy
+</header>
+<main class="p-6">
+  <div class="bg-black bg-opacity-80 p-6 rounded-lg">
+    <section class="overflow-hidden whitespace-nowrap mb-10">
+      <h1 class="text-[5rem] md:text-[8rem] font-extrabold text-red-600 animate-marquee uppercase">
+        DUH DUH DUH DUH MAX VERSTAPPEN
+      </h1>
+    </section>
+    <section class="text-center mb-10">
+      <h2 class="text-3xl font-bold mb-4">Meme of the Week</h2>
+      <p class="mt-4 italic text-gray-400">"When your engineer tells you to box but you're leading by 0.002s...💀"</p>
+    </section>
 
-  <header class="bg-red-700 bg-opacity-90 p-6 text-center text-4xl font-extrabold shadow-md">
-    F1 shit from Verstappen's Fanboy
-  </header>
-
-  <main class="p-6">
-    <div class="bg-black bg-opacity-80 p-6 rounded-lg">
-      
-      <!-- Hype Text -->
-      <section class="overflow-hidden whitespace-nowrap mb-10">
-        <h1 class="text-[5rem] md:text-[8rem] font-extrabold text-red-600 animate-marquee uppercase">
-          DUH DUH DUH DUH MAX VERSTAPPEN 
-        </h1>
-      </section>
-
-      <!-- Meme of the Week -->
-      <section class="text-center mb-10">
-        <h2 class="text-3xl font-bold mb-4"> Meme of the Week </h2>
-        <p class="mt-4 italic text-gray-400">"When your engineer tells you to box but you're leading by 0.002s...💀"</p>
-      </section>
-
-      <!-- Driver Memes -->
-      <section class="mb-10">
-        <h2 class="text-2xl font-semibold mb-6">🏎️ Driver Sections</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Max "Franz Herman" Verstappen</div>
-          <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Charles "depressed" Leclerc</div>
-          <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Carlos "Smooth Operator" Sainz</div>
-          <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Fernando "Still Here" Alonso</div>
-        </div>
-      </section>
-
-      <!-- FIA Drama Generator -->
-      <section class="text-center mb-10">
-        <h2 class="text-2xl font-semibold mb-4">🛑 Random FIA Penalty</h2>
-        <button onclick="generatePenalty()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg hover:bg-yellow-300 font-bold">Generate</button>
-        <p id="penaltyText" class="mt-4 text-lg italic text-gray-300">Click to receive your injustice </p>
-      </section>
-
-      <!-- Submit Your Meme -->
-      <section class="bg-gray-800 p-6 rounded-lg max-w-xl mx-auto">
-        <h2 class="text-2xl font-semibold mb-4">📤 Submit Your Meme</h2>
-        <form id="memeForm" action="https://formspree.io/f/xvgrkpzb" method="POST">
-          <input type="url" name="memeUrl" placeholder="Your Meme URL" class="w-full p-2 rounded mb-4 bg-gray-700 text-white placeholder-gray-400" required>
-          <input type="text" name="name" placeholder="Your Name (Optional)" class="w-full p-2 rounded mb-4 bg-gray-700 text-white placeholder-gray-400">
-          <button type="submit" class="bg-red-600 px-4 py-2 rounded text-white hover:bg-red-500 font-bold">Submit</button>
-        </form>
-        <p id="formStatus" class="text-green-400 mt-4 hidden">✅ Meme submitted successfully!</p>
-      </section>
-
-    </div>
-  </main>
-
-  <footer class="bg-gray-900 bg-opacity-90 text-center p-4 text-sm text-gray-400 mt-10">
-    &copy; 2025 F1 Meme Garage — No DRS Needed to Laugh 🚗💨
-  </footer>
-
-  <script>
-    const penalties = [
-      "Career Jeopardy for being Red Bull's second driver",
-      "50 place grid penalty for Pierre Gasly",
-      "Disqualified for racing like Logan Sargent",
-      "10s penalty for Ocon",
-      "Grid penalty for tweeting too much",
-      "Warning for being too fast in the slow zone"
-    ];
-
-    function generatePenalty() {
-      const penaltyText = document.getElementById("penaltyText");
-      const random = Math.floor(Math.random() * penalties.length);
-      penaltyText.textContent = penalties[random];
-    }
-
-    document.getElementById("memeForm").addEventListener("submit", async function(event) {
-      event.preventDefault();
-      const form = event.target;
-      const data = new FormData(form);
-      const status = document.getElementById("formStatus");
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          status.textContent = "✅ Meme submitted successfully!";
-          status.classList.remove("hidden");
-          form.reset();
-        } else {
-          status.textContent = "❌ Submission failed. Please try again.";
-          status.classList.remove("hidden");
-        }
-      } catch (error) {
-        status.textContent = "❌ Something went wrong. Try again later.";
-        status.classList.remove("hidden");
-      }
-    });
-  </script>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-6">🏎️ Driver Sections</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Max "Franz Herman" Verstappen</div>
+        <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Charles "depressed" Leclerc</div>
+        <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Carlos "Smooth Operator" Sainz</div>
+        <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition cursor-pointer">Fernando "Still Here" Alonso</div>
+      </div>
+    </section>
+    <section class="text-center mb-10">
+      <h2 class="text-2xl font-semibold mb-4">🛑 Random FIA Penalty</h2>
+      <button onclick="generatePenalty()" class="bg-yellow-400 text-black px-6 py-2 rounded-lg hover:bg-yellow-300 font-bold">
+        Generate
+      </button>
+      <p id="penaltyText" class="mt-4 text-lg italic text-gray-300">Click to receive your injustice</p>
+    </section>
+    <section class="bg-gray-800 p-6 rounded-lg max-w-xl mx-auto">
+      <h2 class="text-2xl font-semibold mb-4">📤 Submit Your Meme</h2>
+      <form id="memeForm" action="https://formspree.io/f/xvgrkpzb" method="POST">
+        <input type="url" name="memeUrl" placeholder="Your Meme URL" class="w-full p-2 rounded mb-4 bg-gray-700 text-white placeholder-gray-400" required>
+        <input type="text" name="name" placeholder="Your Name (Optional)" class="w-full p-2 rounded mb-4 bg-gray-700 text-white placeholder-gray-400">
+        <button type="submit" class="bg-red-600 px-4 py-2 rounded text-white hover:bg-red-500 font-bold">Submit</button>
+      </form>
+      <p id="formStatus" class="text-green-400 mt-4 hidden">✅ Meme submitted successfully!</p>
+    </section>
+  </div>
+</main>
+<footer class="bg-gray-900 bg-opacity-90 text-center p-4 text-sm text-gray-400 mt-10">
+  &copy; 2025 F1 Meme Garage — No DRS Needed to Laugh 🚗💨
+</footer>
+<script>
+const penalties=["Career Jeopardy for being Red Bull's second driver","50 place grid penalty for Pierre Gasly","Disqualified for racing like Logan Sargent","10s penalty for Ocon","Grid penalty for tweeting too much","Warning for being too fast in the slow zone"];
+function generatePenalty(){
+  const p=document.getElementById("penaltyText");
+  const r=Math.floor(Math.random()*penalties.length);
+  p.textContent=penalties[r]}
+document.getElementById("memeForm").addEventListener("submit",async function(e){
+  e.preventDefault()
+  const form=e.target
+  const data=new FormData(form)
+  const status=document.getElementById("formStatus")
+  try{
+    const res=await fetch(form.action,{
+      method:form.method,
+      body:data,
+      headers:{'Accept':'application/json'}})
+    if(res.ok){
+      status.textContent="✅ Meme submitted successfully!"
+      status.classList.remove("hidden")
+      form.reset()
+    }else{
+      status.textContent="❌ Submission failed. Please try again."
+      status.classList.remove("hidden")}
+  }catch(err){
+    status.textContent="❌ Something went wrong. Try again later."
+    status.classList.remove("hidden")}})
+</script>
 </body>
 </html>
